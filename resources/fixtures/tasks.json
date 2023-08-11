@@ -1,0 +1,46 @@
+{
+    "create":{
+        "user":{
+            "name": "Clodoaldo Ruaro",
+            "email": "clodoaldo@ruaro.com",
+            "password": "pwd123"
+        },
+        "tasks":{
+            "name": "Comprar no Mercado",
+            "tags": ["Arroz","Carne","Macarrão"]
+        }
+    },
+    "duplicate":{
+        "user":{
+            "name": "Ana Caroline",
+            "email": "ana@caroline.com",
+            "password": "pwd123"
+        },
+        "tasks":{
+            "name": "Ir a manicure",
+            "tags": []
+        }
+    },
+    "tags_limit":{
+        "user":{
+            "name": "Aldocir",
+            "email": "aldo@cir.com",
+            "password": "pwd123"
+        },
+        "tasks":{
+            "name": "Estudar Robotframework",
+            "tags": ["Android","iOS","Web","Desktop"]
+        }
+    },
+    "done":{
+        "user":{
+            "name": "Tonho Istarque",
+            "email": "tonho@istarque.com",
+            "password": "pwd123"
+        },
+        "tasks":{
+            "name": "Testar tela de login",
+            "tags": ["Usuário","Senha","Cadastro"]
+        }
+    }
+}
