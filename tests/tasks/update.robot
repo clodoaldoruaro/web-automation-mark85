@@ -23,3 +23,4 @@ Deve permiter concluir uma tarefa
 
     Valida tarefa cadastrada       ${massa}[tasks][name]
     Marca tarefa como concluida    ${massa}[tasks][name]
+    Valida tarefa completa         ${massa}[tasks][name]
