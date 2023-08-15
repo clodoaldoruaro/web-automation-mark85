@@ -42,5 +42,16 @@
             "name": "Testar tela de login",
             "tags": ["Usuário","Senha","Cadastro"]
         }
+    },
+    "delete":{
+        "user":{
+            "name": "Jessy Pynkman",
+            "email": "jessy@pynkman.com",
+            "password": "pwd123"
+        },
+        "tasks":{
+            "name": "Comprar mantimentos",
+            "tags": ["Mascara","Luvas"]
+        }
     }
 }
