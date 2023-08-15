@@ -1,8 +1,9 @@
 from robot.api.deco import keyword
 from pymongo import MongoClient
 import bcrypt
+import os
 
-client = MongoClient('mongodb+srv://clodoaldoruaro:8805@cluster0.ikdtgsx.mongodb.net/?retryWrites=true&w=majority')
+client = MongoClient(os.environ['CONNECT_MONGODB'])
 
 db = client['markdb']
 
@@ -17,7 +18,7 @@ def clean_user(user_email):
     if (user):
         tasks.delete_many({'user': user['_id']})
         users.delete_many({'email': user_email})
-
+        
 # Apaga usuario
 @keyword('Remove usuario DB')
 def remove_user(email):
