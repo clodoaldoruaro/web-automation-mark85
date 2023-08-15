@@ -20,7 +20,7 @@ Resource        pages/components/Alert.resource
 #Inicia o navegador na home page
 Inicia sessao
 
-    New Browser     browser=chromium        headless=off
+    New Browser     browser=${BROWSER}        headless=off
     New Page        ${BASE_URL}
 
 Get fixture

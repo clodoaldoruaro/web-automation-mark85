@@ -8,6 +8,7 @@ Test Teardown     Take Screenshot
 
 *** Test Cases ***
 Deve poder cadastrar uma nova tarefa
+    [Tags]    critico
     
     ${massa}    Get fixture    tasks    create
 
