@@ -24,8 +24,26 @@ Inicia sessao
     New Page        ${BASE_URL}
 
 Get fixture
-    [Arguments]    ${nome_arquivo}        ${cenario}
+    [Arguments]    ${nome_arquivo}      ${cenario}
 
-    ${massa}    Load Json From File         ${EXECDIR}/resources/fixtures/${nome_arquivo}.json        encoding=utf-8
+    ${massa}    Load Json From File     ${EXECDIR}/resources/fixtures/${nome_arquivo}.json        encoding=utf-8
 
     [Return]    ${massa}[${cenario}]
+
+Reset usuario DB
+     [Arguments]    ${massa}
+
+    Limpa usuario DB        ${massa}[email]
+    Inserir usuario DB      ${massa}
+
+Criar tarefa API
+    [Arguments]    	${massa}
+    
+    POST login usuario      ${massa}[user]
+    POST nova tarefa        ${massa}[tasks]
+
+Fazer login
+    [Arguments]     ${massa}
+
+    Realiza login                ${massa}[user]
+    Usuario deve estar logado    ${massa}[user][name]

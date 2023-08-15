@@ -11,10 +11,8 @@ Deve poder cadastrar uma nova tarefa
     
     ${massa}    Get fixture    tasks    create
 
-    Limpa usuario DB        ${massa}[user][email]
-    Inserir usuario DB      ${massa}[user]
-
-    Realiza login           ${massa}[user]
+    Reset usuario DB     ${massa}[user]
+    Fazer login          ${massa}
 
     Clica botao nova tarefa
     Cadastra nova tarefa        ${massa}[tasks]
@@ -25,13 +23,9 @@ Não deve cadastrar tarefa com nome duplicado
 
     ${massa}    Get fixture    tasks    duplicate
 
-    Limpa usuario DB        ${massa}[user][email]
-    Inserir usuario DB      ${massa}[user]
-
-    POST login usuario      ${massa}[user]
-    POST nova tarefa        ${massa}[tasks]
-
-    Realiza login           ${massa}[user]
+    Reset usuario DB     ${massa}[user]
+    Criar tarefa API     ${massa}
+    Fazer login          ${massa}
 
     Clica botao nova tarefa
     Cadastra nova tarefa    ${massa}[tasks]
@@ -43,12 +37,9 @@ Não deve cadastrar tarefa com limite de tags
 
     ${massa}    Get fixture    tasks    tags_limit
 
-    Limpa usuario DB        ${massa}[user][email]
-    Inserir usuario DB      ${massa}[user]
-
-    Realiza login           ${massa}[user]
+    Reset usuario DB     ${massa}[user]
+    Fazer login          ${massa}
 
     Clica botao nova tarefa
     Cadastra nova tarefa    ${massa}[tasks]
-
     Mensagem notificacao    Oops! Limite de tags atingido.
