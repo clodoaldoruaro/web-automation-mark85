@@ -8,7 +8,7 @@ Test Teardown     Take Screenshot
 
 *** Test Case ***
 Deve poder cadastrar novos usuários
-    [Tags]    novo_usuario
+    [Tags]         novo_usuario
 
     ${user}        Create Dictionary
     ...            name=Clodoaldo Ruaro
@@ -16,30 +16,32 @@ Deve poder cadastrar novos usuários
     ...            password=pwd123
     
     #Remove o usuário do teste anterior
-    Remove usuario DB              ${user}[email]
+    Remove usuario DB       ${user}[email]
 
     Acessar pagina inscricao
     Enviar pagina inscricao      ${user}
     Mensagem notificacao        Boas vindas ao Mark85, o seu gerenciador de tarefas.
 
 Não deve permitir cadastrar email duplicado
-    [Tags]    email_duplicado
+    [Tags]         email_duplicado
 
     ${user}        Create Dictionary
     ...            name=Ruaro Clodoaldo 
     ...            email=ruaro@clodoaldo.com
     ...            password=pwd123
-
-    Remove usuario DB    ${user}[email]
+    
+    # Remove e cria novamente o usuário na base para manter a integridade
+    Remove usuario DB     ${user}[email]
     Inserir usuario DB    ${user}
     
     Acessar pagina inscricao
-    Enviar pagina inscricao      ${user}
+    Enviar pagina inscricao     ${user}
     Mensagem notificacao        Oops! Já existe uma conta com o e-mail informado.
 
 Campos obrigatórios
-    [Tags]    campos_obrigatorios
+    [Tags]         campos_obrigatorios
 
+    # Cria dicionario com os dados vazios
     ${user}        Create Dictionary
     ...            name=${EMPTY}
     ...            email=${EMPTY}
@@ -53,7 +55,7 @@ Campos obrigatórios
     Alerta campo texto    Informe uma senha com pelo menos 6 digitos
 
 Não deve cadastrar com email incorreto
-    [Tags]     email_invalido
+    [Tags]         email_invalido
 
     ${user}        Create Dictionary
     ...            name=Charles Xavier
@@ -66,10 +68,12 @@ Não deve cadastrar com email incorreto
     Alerta campo texto    Digite um e-mail válido
 
 Não deve cadastrar com senha menor que 6 digitos
-    [Tags]    senha_curta
-    
+    [Tags]         senha_curta
+        
+    # Lista de senhas curtas com menos de 6 digitos
     @{password_list}        Create List     1    12    123    1234    12345
 
+    # Tenta inserir todas as senhas da lista até 5 digitos
     FOR    ${password}    IN    @{password_list}
         Senha curta    ${password}
     END

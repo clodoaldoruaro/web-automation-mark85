@@ -3,7 +3,7 @@ Documentation        Elementos e ações da página de cadastro
 
 Library         Browser
 Resource        ../env.resource
-Resource        components/Alert.resource
+Resource        ../base.resource
 
 *** Keywords ***
 Acessar pagina inscricao
@@ -12,7 +12,7 @@ Acessar pagina inscricao
 
     ${element}        Set Variable         css=h1
 
-    #Checkpoint
+    # Aguarda o element ficar visivel por ate 5 segundos e valida se element é igual a Faça seu cadastro
     Wait For Elements State        ${element}        visible        5
     Get Text                       ${element}        equal          Faça seu cadastro
 
@@ -31,9 +31,9 @@ Senha curta
     [Arguments]     ${short_pass}   
 
         ${user}        Create Dictionary    
-        ...    name=Charles Xavier    
-        ...    email=xavier@mail.com.br     
-        ...    password=${short_pass}
+        ...            name=Charles Xavier    
+        ...            email=xavier@mail.com.br     
+        ...            password=${short_pass}
     
     Acessar pagina inscricao
     Enviar pagina inscricao    ${user}
