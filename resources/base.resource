@@ -18,7 +18,7 @@ Resource        pages/components/Notice.resource
 Resource        pages/components/Alert.resource
 
 *** Keywords ***
-#Inicia o navegador na home page com modo visual desativado
+#Inicia o navegador na home page com modo visual ativado
 Inicia sessao
 
     New Browser     browser=${BROWSER}        headless=off
