@@ -3,7 +3,7 @@ from pymongo import MongoClient
 import bcrypt
 import os
 
-client = MongoClient(os.environ['CONNECT_MONGODB'])
+client = MongoClient(os.environ.get('CONNECT_MONGODB'))
 
 db = client['markdb']
 
